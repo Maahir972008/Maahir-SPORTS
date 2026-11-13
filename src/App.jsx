@@ -161,6 +161,24 @@ const departments = [
   { number: "04", name: "Match essentials", category: "Accessories", note: "THE FINISHING TOUCH" },
 ];
 
+const heroSlides = [
+  {
+    image: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1400&q=90",
+    alt: "Footballer ready for the game",
+    caption: "THE EVERYDAY ATHLETE",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1400&q=85",
+    alt: "Football pitch ready for a match",
+    caption: "ALL HEART. ALL GAME.",
+  },
+  {
+    image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Shot_putter%2C_University_of_Nebraska.jpg",
+    alt: "University of Nebraska shot put athlete in 1942",
+    caption: "POWER IN EVERY THROW",
+  },
+];
+
 const money = (amount) =>
   new Intl.NumberFormat("en-NG", {
     style: "currency",
@@ -382,6 +400,7 @@ function App() {
   const [savedItems, setSavedItems] = useState([]);
   const [contactSent, setContactSent] = useState(false);
   const [toast, setToast] = useState("");
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("maahir-sports-theme", theme);
@@ -460,19 +479,36 @@ function App() {
             <div className="hero-proof"><div className="avatar-stack"><span>F</span><span>A</span><span>K</span><span>+</span></div><div><strong>Made for players</strong><small>From warm-up to last whistle.</small></div></div>
           </div>
           <div className="hero-visual">
-            <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1400&q=90" alt="Footballer ready for the game" />
+            <img src={heroSlides[activeHeroSlide].image} alt={heroSlides[activeHeroSlide].alt} />
             <div className="hero-image-shade" />
             <div className="hero-sticker"><span>PLAY</span><strong>YOUR<br />WAY.</strong><i>★</i></div>
-            <div className="hero-image-caption"><span>01 / 03</span><span>THE EVERYDAY ATHLETE</span></div>
+            <div className="hero-image-caption">
+              <span aria-live="polite">{String(activeHeroSlide + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}</span>
+              <span>{heroSlides[activeHeroSlide].caption}</span>
+            </div>
+            <button
+              className="hero-slide-button is-prev"
+              aria-label="Previous hero slide"
+              onClick={() => setActiveHeroSlide((activeHeroSlide - 1 + heroSlides.length) % heroSlides.length)}
+            >
+              <Icon name="arrow" size={19} />
+            </button>
+            <button
+              className="hero-slide-button is-next"
+              aria-label="Next hero slide"
+              onClick={() => setActiveHeroSlide((activeHeroSlide + 1) % heroSlides.length)}
+            >
+              <Icon name="arrow" size={19} />
+            </button>
           </div>
           <div className="hero-side-note">BUILT FOR EVERY VERSION OF YOU&nbsp; — &nbsp;BUILT FOR EVERY VERSION OF YOU&nbsp; — &nbsp;</div>
         </section>
 
         <section className="benefit-strip" aria-label="Store benefits">
-          {/* <div><span className="benefit-icon">✳</span><span>GEAR THAT GOES HARD</span></div> */}
+          <div><span className="benefit-icon">✳</span><span>GEAR THAT GOES HARD</span></div>
           <div><span className="benefit-icon">↗</span><span>DELIVERY ACROSS NIGERIA</span></div>
           <div><span className="benefit-icon">◈</span><span>SECURE CHECKOUT</span></div>
-          {/* <div><span className="benefit-icon">↺</span><span>7-DAY EASY RETURNS</span></div> */}
+          <div><span className="benefit-icon">↺</span><span>7-DAY EASY RETURNS</span></div>
         </section>
 
         <section className="departments section-wrap" aria-labelledby="departments-title">

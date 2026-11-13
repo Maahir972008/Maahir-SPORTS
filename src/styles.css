@@ -118,6 +118,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .hero-visual { position: absolute; top: 0; right: 0; width: 53%; height: 100%; overflow: hidden; background: var(--green); }
 .hero-visual > img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 42%; filter: saturate(.8); }
 .hero-image-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #173b2b35, transparent 35%), linear-gradient(0deg, #10271a75, transparent 30%); }
+.hero-slide-button { width: 42px; height: 42px; display: grid; place-items: center; position: absolute; z-index: 2; top: 50%; padding: 0; border: 1px solid #ffffff99; border-radius: 50%; background: #10271a99; color: #fff; cursor: pointer; transform: translateY(-50%); transition: background .2s, color .2s; }
+.hero-slide-button:hover { background: var(--lime); color: var(--green); }
+.hero-slide-button.is-prev { left: 18px; }
+.hero-slide-button.is-next { right: 18px; }
+.hero-slide-button.is-prev svg { transform: rotate(180deg); }
 .hero-sticker { width: 127px; height: 127px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: absolute; top: 14%; right: 13%; border-radius: 50%; background: var(--lime); color: var(--green); transform: rotate(10deg); box-shadow: 0 8px 26px #0e20163b; }
 .hero-sticker span { font-size: 8px; font-weight: 700; letter-spacing: .18em; }
 .hero-sticker strong { margin-top: 5px; font: 700 24px/.86 var(--display); letter-spacing: -.08em; text-align: center; }
@@ -326,6 +331,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .hero-sticker { width: 92px; height: 92px; top: 12%; right: 9%; }
   .hero-sticker strong { font-size: 18px; }
   .hero-sticker i { right: 14px; bottom: 12px; font-size: 12px; }
+  .hero-slide-button { width: 38px; height: 38px; }
+  .hero-slide-button.is-prev { left: 12px; }
+  .hero-slide-button.is-next { right: 12px; }
   .hero-image-caption { bottom: 18px; }
   .hero-side-note { display: none; }
   .benefit-strip { min-height: unset; display: grid; grid-template-columns: 1fr 1fr; gap: 17px 10px; padding: 19px 6%; }
