@@ -554,9 +554,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .product-name { width: 100%; min-height: 2.5em; margin: 7px 0 6px; font-size: clamp(14px, 4vw, 18px); line-height: 1.2; overflow-wrap: anywhere; }
   .product-price { flex-wrap: wrap; gap: 5px; font-size: 13px; line-height: 1.25; }
   .product-price del { font-size: 10px; }
-  .benefit-strip { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 14px 6%; }
-  .benefit-strip > div { gap: 9px; font-size: 11px; letter-spacing: .06em; }
-  .benefit-icon { width: 20px; flex: 0 0 20px; font-size: 16px; text-align: center; }
+  .benefit-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 12px 6%; }
+  .benefit-strip > div { min-width: 0; gap: 7px; padding: 8px 6px; border-top: 1px solid #ffffff2b; font-size: clamp(9px, 2.7vw, 11px); line-height: 1.25; letter-spacing: .025em; }
+  .benefit-icon { width: 20px; height: 20px; display: grid; flex: 0 0 20px; place-items: center; border-radius: 50%; background: #d3f36b1c; font-size: 13px; text-align: center; }
+  .benefit-strip > div:nth-child(2) .benefit-icon { color: #d0bbff; background: #7549bc55; }
+  .benefit-strip > div:nth-child(3) .benefit-icon { color: #fff; background: #ffffff20; }
+  .benefit-strip > div:nth-child(4) .benefit-icon { color: #bce8cb; background: #bce8cb20; }
   .hero h1 { font-size: clamp(68px, 17vw, 102px); }
   .departments-heading h2 { font-size: 49px; }
   .section-heading h2, .contact-copy h2 { font-size: 60px; }
