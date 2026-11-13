@@ -469,10 +469,10 @@ function App() {
         </section>
 
         <section className="benefit-strip" aria-label="Store benefits">
-          <div><span className="benefit-icon">✳</span><span>GEAR THAT GOES HARD</span></div>
+          {/* <div><span className="benefit-icon">✳</span><span>GEAR THAT GOES HARD</span></div> */}
           <div><span className="benefit-icon">↗</span><span>DELIVERY ACROSS NIGERIA</span></div>
           <div><span className="benefit-icon">◈</span><span>SECURE CHECKOUT</span></div>
-          <div><span className="benefit-icon">↺</span><span>7-DAY EASY RETURNS</span></div>
+          {/* <div><span className="benefit-icon">↺</span><span>7-DAY EASY RETURNS</span></div> */}
         </section>
 
         <section className="departments section-wrap" aria-labelledby="departments-title">

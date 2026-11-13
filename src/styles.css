@@ -538,6 +538,17 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .empty-cart p, .toast, .whatsapp-float { font-size: 16px; }
 
 @media (max-width: 680px) {
+  .product-grid { gap: 28px 12px; }
+  .product-info { padding: 10px 2px 3px; }
+  .product-meta { flex-wrap: wrap; gap: 3px 6px; font-size: 9px; line-height: 1.25; }
+  .product-meta span { min-width: 0; }
+  .product-meta span:last-child { text-align: right; }
+  .product-name { width: 100%; min-height: 2.5em; margin: 7px 0 6px; font-size: clamp(14px, 4vw, 18px); line-height: 1.2; overflow-wrap: anywhere; }
+  .product-price { flex-wrap: wrap; gap: 5px; font-size: 13px; line-height: 1.25; }
+  .product-price del { font-size: 10px; }
+  .benefit-strip { grid-template-columns: minmax(0, 1fr); gap: 9px; padding: 14px 6%; }
+  .benefit-strip > div { gap: 9px; font-size: 11px; letter-spacing: .06em; }
+  .benefit-icon { width: 20px; flex: 0 0 20px; font-size: 16px; text-align: center; }
   .hero h1 { font-size: clamp(68px, 17vw, 102px); }
   .departments-heading h2 { font-size: 49px; }
   .section-heading h2, .contact-copy h2 { font-size: 60px; }
@@ -561,4 +572,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .cart-item-info > span, .remove-item, .cart-summary small { font-size: 12px; }
   .empty-cart h3 { font-size: 25px; }
   .empty-cart p, .toast, .whatsapp-float { font-size: 14px; }
+  .product-meta { font-size: 9px; }
+  .product-name { font-size: clamp(14px, 4vw, 18px); line-height: 1.2; overflow-wrap: anywhere; }
+  .product-price { font-size: 13px; }
 }
