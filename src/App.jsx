@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const products = [
   {
@@ -10,7 +10,7 @@ const products = [
     badge: "BESTSELLER",
     color: "Forest / Lime",
     image:
-      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1552066379-e7bfd22155c5?auto=format&fit=crop&w=900&q=85",
     description:
       "A lightweight, breathable match-day jersey built to keep you cool through every minute. Finished with a relaxed athletic fit and soft, quick-dry fabric.",
   },
@@ -22,7 +22,7 @@ const products = [
     badge: "NEW DROP",
     color: "Emerald / Volt",
     image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1684355414454-ed132f6c41cd?auto=format&fit=crop&w=900&q=85",
     description:
       "Take control of the pitch with a close-touch upper and responsive traction. Made for quick turns, confident strikes, and players who see the game differently.",
   },
@@ -33,7 +33,7 @@ const products = [
     price: 10000,
     color: "Deep Green",
     image:
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1789110519888-758d7ab3908e?auto=format&fit=crop&w=900&q=85",
     description:
       "Easy-moving training shorts with a secure elastic waist, practical side pockets, and featherweight fabric that works just as hard as you do.",
   },
@@ -45,7 +45,7 @@ const products = [
     badge: "FAN FAVOURITE",
     color: "Black / Emerald",
     image:
-      "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1789110520164-2389992e5d0f?auto=format&fit=crop&w=900&q=85",
     description:
       "Warm up, cool down, or head out. These tapered joggers pair a soft-touch feel with flexible stretch and a clean, all-day silhouette.",
   },
@@ -56,7 +56,7 @@ const products = [
     price: 5000,
     color: "White / Green",
     image:
-      "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1597532755880-023c678a0f2f?auto=format&fit=crop&w=900&q=85",
     description:
       "A cushioned, stay-put fit with breathable panels where you need them most. Your new reliable pair for training, match day, and everything after.",
   },
@@ -68,7 +68,13 @@ const products = [
     badge: "LIGHTWEIGHT",
     color: "Emerald / Black",
     image:
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=85",
+      "https://upload.wikimedia.org/wikipedia/commons/5/5f/250629_FC_%EC%84%9C%EC%9A%B8_vs_%ED%8F%AC%ED%95%AD_%28%EB%B0%95%EC%88%98%EC%9D%BC%29_1.jpg",
+    imageCredit: {
+      author: "Explicit",
+      source: "https://commons.wikimedia.org/wiki/File:250629_FC_%EC%84%9C%EC%9A%B8_vs_%ED%8F%AC%ED%95%AD_(%EB%B0%95%EC%88%98%EC%9D%BC)_1.jpg",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    },
     description:
       "Low-profile, lightweight protection designed to stay comfortable and secure. A dependable essential for every competitive session.",
   },
@@ -79,7 +85,7 @@ const products = [
     price: 14000,
     color: "Black",
     image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1630270395989-4fc52a26e5ef?auto=format&fit=crop&w=900&q=85",
     description:
       "A smooth, supportive base layer with four-way stretch and a close-to-body fit. Designed for comfort under your kit without holding you back.",
   },
@@ -91,7 +97,7 @@ const products = [
     badge: "2-PACK",
     color: "Emerald / Purple",
     image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1793982681991-049dda0a8447?auto=format&fit=crop&w=900&q=85",
     description:
       "A soft, absorbent pair that keeps sweat out of the way and your focus on the game. Comfortable stretch with a secure, no-slip feel.",
   },
@@ -102,7 +108,7 @@ const products = [
     price: 19000,
     color: "Purple / White",
     image:
-      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1761751843922-edb2b2c3fd7f?auto=format&fit=crop&w=900&q=85",
     description:
       "A fresh away-day look with a modern athletic cut. Lightweight fabric and clean detailing make this an easy favourite on and off the pitch.",
   },
@@ -114,7 +120,7 @@ const products = [
     badge: "JUST IN",
     color: "White / Purple",
     image:
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=900&q=85",
     description:
       "Get a sure-footed feel on hard ground and turf with durable grip and a cushioned ride. Built for the pitch you actually play on.",
   },
@@ -125,7 +131,7 @@ const products = [
     price: 8500,
     color: "Black / Green",
     image:
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=85",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=85",
     description:
       "Supportive stretch where it counts, with a lightweight feel that layers easily under your match shorts. Made to move with you.",
   },
@@ -136,9 +142,195 @@ const products = [
     price: 3500,
     color: "Purple / Emerald",
     image:
-      "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=85",
+      "https://upload.wikimedia.org/wikipedia/commons/8/85/Captain_Armband_%28soccer%29.png",
+    imageCredit: {
+      author: "Kevin McDon-ELL",
+      source: "https://commons.wikimedia.org/wiki/File:Captain_Armband_(soccer).png",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    },
     description:
       "Make your role official. A comfortable, adjustable captain's band with a bold finish that stands out from kickoff to the final whistle.",
+  },
+  {
+    id: 13,
+    name: "Matchday Home Shirt",
+    category: "Jerseys",
+    price: 22000,
+    badge: "NEW DROP",
+    color: "Gold / Green",
+    image: "https://images.unsplash.com/photo-1761751843915-f5b04a06a2ef?auto=format&fit=crop&w=900&q=85",
+    description: "A lightweight match shirt with a breathable feel and a relaxed fit for training, match day, and the celebrations after.",
+  },
+  {
+    id: 14,
+    name: "Club Training Jersey",
+    category: "Jerseys",
+    price: 16500,
+    color: "Yellow / Green",
+    image: "https://images.unsplash.com/photo-1552066379-e7bfd22155c5?auto=format&fit=crop&w=900&q=85",
+    description: "A quick-drying training jersey with an easy athletic cut for drills, warm-ups, and everyday wear.",
+  },
+  {
+    id: 15,
+    name: "Velocity FG Cleats",
+    category: "Boots",
+    price: 48000,
+    badge: "BESTSELLER",
+    color: "Black / White",
+    image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=900&q=85",
+    description: "Firm-ground cleats with a secure fit and responsive traction for quick changes of direction.",
+  },
+  {
+    id: 16,
+    name: "Turf Control Boots",
+    category: "Boots",
+    price: 42000,
+    color: "White / Green",
+    image: "https://images.unsplash.com/photo-1684355414585-19abfb02a82e?auto=format&fit=crop&w=900&q=85",
+    description: "A close-touch turf boot with a cushioned feel for small-sided games and hard-ground pitches.",
+  },
+  {
+    id: 17,
+    name: "Core Match Shorts",
+    category: "Shorts",
+    price: 12000,
+    color: "Slate / White",
+    image: "https://images.unsplash.com/photo-1789110520388-ebea45c8bbbb?auto=format&fit=crop&w=900&q=85",
+    description: "Lightweight football shorts with a flexible waistband and easy movement through every drill.",
+  },
+  {
+    id: 18,
+    name: "Away Kit Shorts",
+    category: "Shorts",
+    price: 11500,
+    badge: "MATCHDAY",
+    color: "Black / White",
+    image: "https://images.unsplash.com/photo-1789110519888-758d7ab3908e?auto=format&fit=crop&w=900&q=85",
+    description: "A simple, breathable pair of match shorts designed to move comfortably from warm-up to full time.",
+  },
+  {
+    id: 19,
+    name: "Sprint Training Shorts",
+    category: "Shorts",
+    price: 9500,
+    color: "Red / Black",
+    image: "https://images.unsplash.com/photo-1761751843922-edb2b2c3fd7f?auto=format&fit=crop&w=900&q=85",
+    description: "A quick-drying training short with a secure waist and a lightweight feel for fast sessions.",
+  },
+  {
+    id: 20,
+    name: "Warm-Up Track Joggers",
+    category: "Joggers",
+    price: 22500,
+    color: "Blue / Black",
+    image: "https://images.unsplash.com/photo-1789110853665-11a03e391f04?auto=format&fit=crop&w=900&q=85",
+    description: "Soft, tapered warm-up joggers with an elastic waist and a flexible fit for training and travel.",
+  },
+  {
+    id: 21,
+    name: "Street Form Joggers",
+    category: "Joggers",
+    price: 21000,
+    color: "Purple / White",
+    image: "https://images.unsplash.com/photo-1789110853737-e30e04cda364?auto=format&fit=crop&w=900&q=85",
+    description: "Everyday joggers with a soft-touch finish, adjustable drawstring, and easy tapered shape.",
+  },
+  {
+    id: 22,
+    name: "Essential Training Joggers",
+    category: "Joggers",
+    price: 19500,
+    badge: "PLAYER PICK",
+    color: "Grey / White",
+    image: "https://images.unsplash.com/photo-1789110520164-2389992e5d0f?auto=format&fit=crop&w=900&q=85",
+    description: "A versatile training pant with a comfortable stretch and a clean, streamlined leg.",
+  },
+  {
+    id: 23,
+    name: "Match Crew Socks",
+    category: "Socks",
+    price: 5500,
+    color: "Red / White",
+    image: "https://images.unsplash.com/photo-1597532755880-023c678a0f2f?auto=format&fit=crop&w=900&q=85",
+    description: "Cushioned crew socks with a stay-put fit and breathable knit for match day comfort.",
+  },
+  {
+    id: 24,
+    name: "Pitch Grip Socks",
+    category: "Socks",
+    price: 6500,
+    badge: "2-PACK",
+    color: "Blue / Green",
+    image: "https://images.unsplash.com/photo-1787749202208-c7d733fd305d?auto=format&fit=crop&w=900&q=85",
+    description: "Supportive football socks with a comfortable stretch and a secure feel inside your boots.",
+  },
+  {
+    id: 25,
+    name: "Pro Fit Shin Guards",
+    category: "Protection",
+    price: 10500,
+    color: "Black / Red",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/32/250629_FC_%EC%84%9C%EC%9A%B8_vs_%ED%8F%AC%ED%95%AD_%28%EB%B0%95%EC%88%98%EC%9D%BC%29_2.jpg",
+    imageCredit: {
+      author: "Explicit",
+      source: "https://commons.wikimedia.org/wiki/File:250629_FC_%EC%84%9C%EC%9A%B8_vs_%ED%8F%AC%ED%95%AD_(%EB%B0%95%EC%88%98%EC%9D%BC)_2.jpg",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    },
+    description: "Low-profile shin protection designed to sit securely and stay comfortable through the full match.",
+  },
+  {
+    id: 26,
+    name: "Flex Sleeve Guards",
+    category: "Protection",
+    price: 9000,
+    color: "White / Green",
+    image: "https://images.unsplash.com/photo-1793982681991-049dda0a8447?auto=format&fit=crop&w=900&q=85",
+    description: "A light, flexible fit that helps keep your guards steady without restricting your movement.",
+  },
+  {
+    id: 27,
+    name: "Long-Sleeve Base Layer",
+    category: "Base layers",
+    price: 17500,
+    color: "Black",
+    image: "https://images.unsplash.com/photo-1630270395989-4fc52a26e5ef?auto=format&fit=crop&w=900&q=85",
+    description: "A smooth, close-fitting layer that adds comfortable coverage under your kit on cool training days.",
+  },
+  {
+    id: 28,
+    name: "Club Match Ball",
+    category: "Accessories",
+    price: 18500,
+    badge: "ALL-ROUND",
+    color: "White / Green",
+    image: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=85",
+    description: "A durable training ball with a balanced touch for passing drills, kickabouts, and match practice.",
+  },
+  {
+    id: 29,
+    name: "Keeper Match Gloves",
+    category: "Accessories",
+    price: 24000,
+    color: "Emerald / Volt",
+    image: "https://images.unsplash.com/photo-1793976233496-765c2780d344?auto=format&fit=crop&w=900&q=85",
+    description: "Goalkeeper gloves with a secure wrist fit and grippy palms for confident handling.",
+  },
+  {
+    id: 30,
+    name: "Captain's Match Armband",
+    category: "Accessories",
+    price: 4500,
+    color: "Red / Black",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/85/Captain_Armband_%28soccer%29.png",
+    imageCredit: {
+      author: "Kevin McDon-ELL",
+      source: "https://commons.wikimedia.org/wiki/File:Captain_Armband_(soccer).png",
+      license: "CC BY 3.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/3.0/",
+    },
+    description: "An adjustable captain's band that marks the role clearly and fits comfortably over your kit.",
   },
 ];
 
@@ -309,6 +501,12 @@ function ProductCard({ product, onView, isSaved, onSave }) {
           <strong>{money(product.price)}</strong>
           {product.oldPrice && <del>{money(product.oldPrice)}</del>}
         </div>
+        {product.imageCredit && (
+          <small className="product-image-credit">
+            Image: <a href={product.imageCredit.source} target="_blank" rel="noreferrer">{product.imageCredit.author}</a>
+            {" "}/{" "}<a href={product.imageCredit.licenseUrl} target="_blank" rel="noreferrer">{product.imageCredit.license}</a>
+          </small>
+        )}
       </div>
     </article>
   );
@@ -401,6 +599,7 @@ function App() {
   const [contactSent, setContactSent] = useState(false);
   const [toast, setToast] = useState("");
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+  const heroTouchStartX = useRef(null);
 
   useEffect(() => {
     localStorage.setItem("maahir-sports-theme", theme);
@@ -420,6 +619,17 @@ function App() {
   }, [activeCategory, searchTerm, sortOrder]);
 
   const cartCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+  const handleHeroTouchStart = (event) => {
+    heroTouchStartX.current = event.changedTouches[0]?.clientX ?? null;
+  };
+  const handleHeroTouchEnd = (event) => {
+    if (heroTouchStartX.current === null) return;
+    const distance = event.changedTouches[0].clientX - heroTouchStartX.current;
+    heroTouchStartX.current = null;
+    if (Math.abs(distance) < 45) return;
+    const direction = distance < 0 ? 1 : -1;
+    setActiveHeroSlide((current) => (current + direction + heroSlides.length) % heroSlides.length);
+  };
   const goToShop = () => document.getElementById("shop")?.scrollIntoView({ behavior: "smooth" });
   const notify = (message) => {
     setToast(message);
@@ -478,7 +688,7 @@ function App() {
             </div>
             <div className="hero-proof"><div className="avatar-stack"><span>F</span><span>A</span><span>K</span><span>+</span></div><div><strong>Made for players</strong><small>From warm-up to last whistle.</small></div></div>
           </div>
-          <div className="hero-visual">
+          <div className="hero-visual" onTouchStart={handleHeroTouchStart} onTouchEnd={handleHeroTouchEnd}>
             <img src={heroSlides[activeHeroSlide].image} alt={heroSlides[activeHeroSlide].alt} />
             <div className="hero-image-shade" />
             <div className="hero-sticker"><span>PLAY</span><strong>YOUR<br />WAY.</strong><i>★</i></div>
